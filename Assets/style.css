@@ -1,0 +1,15 @@
+body {
+    background-image: url(./JS-colorful.jpg);
+}
+
+header {
+    background-color: turquoise;
+}
+
+.empty {
+    height: 100px;
+}
+
+.questions {
+    display: hidden;
+}
