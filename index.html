@@ -219,6 +219,8 @@
                 //     })
                 // })
                 //runs FOR loop for the length of 'questions'
+                $('#q1').show();
+                var currentQ
                 for (let i = 0; i < questions.length; i++) {
                     //shows 1st question [element 1 in the 'questions' object]
                     // questions[i].show();
@@ -226,7 +228,7 @@
                     // var showQ = questions[i].show();
                     $('#true').on("click", function () {
                         questions[i].hide();
-                        return questions[i++].show();
+                        return currentQ = questions[i++].show();
                     })
                 }
                 // if ($('#true').on("click"))
