@@ -40,22 +40,20 @@
         </div>
     </div>
     <div class="list-group questions" id="q1">
-        <div id="value1">
-            <a href="#" class="list-group-item list-group-item-action">Question 1</a>
-            <a href="#false" class="list-group-item list-group-item-action list-group-item-info">A: This is answer
-                choice A
-            </a>
-            <a href="#false" class="list-group-item list-group-item-action list-group-item-info">B: This is answer
-                choice B
-            </a>
-            <a href="#true" id="true" class="list-group-item list-group-item-action list-group-item-info">C: This is
-                answer choice
-                C
-            </a>
-            <a href="#false" class="list-group-item list-group-item-action list-group-item-info">D: This is answer
-                choice D
-            </a>
-        </div>
+        <a href="#" class="list-group-item list-group-item-action">Question 1</a>
+        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">A: This is answer
+            choice A
+        </a>
+        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">B: This is answer
+            choice B
+        </a>
+        <a href="#true" id="true" class="list-group-item list-group-item-action list-group-item-info">C: This is
+            answer choice
+            C
+        </a>
+        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">D: This is answer
+            choice D
+        </a>
     </div>
     <div class="list-group questions" id="q2">
         <a href="#" class="list-group-item list-group-item-action">Question 2</a>
@@ -70,10 +68,14 @@
     </div>
     <div class="list-group questions" id="q3">
         <a href="#" class="list-group-item list-group-item-action">Question 3</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
+        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A
+        </a>
+        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B
+        </a>
+        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C
+        </a>
+        <a href="#true" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D
+        </a>
     </div>
     <div class="list-group questions" id="q4">
         <a href="#" class="list-group-item list-group-item-action">Question 4</a>
@@ -218,22 +220,24 @@
                 //         return questions[i++].show();
                 //     })
                 // })
-                //runs FOR loop for the length of 'questions'
-                $('#q1').show();
-                var currentQ
-                for (let i = 0; i < questions.length; i++) {
-                    //shows 1st question [element 1 in the 'questions' object]
-                    // questions[i].show();
-                    console.log(questions[i]);
-                    // var showQ = questions[i].show();
-                    $('#true').on("click", function () {
-                        questions[i].hide();
-                        return currentQ = questions[i++].show();
-                    })
-                }
-                // if ($('#true').on("click"))
             })
+            var oldQ = [];
+            var currentQ = [];
+            for (let i = 0; i < questions.length; i++) {
 
+                console.log(questions[i]);
+                // var showQ = questions[i].show();
+                $('#true').on("click", function () {
+                    $('#q1').hide();
+                    oldQ = questions[i].hide();
+                    currentQ = questions[i++].show();
+                })
+                return oldQ;
+                return currentQ;
+            }
+
+
+            // ============================================================================================================ 
             //where I was before starting with AskBCS LA
             // $(document).ready(function () {
             // //hides questions until 'Begin Quiz' button is clicked
