@@ -12,6 +12,9 @@
     <!-- Reset  -->
     <link rel="stylesheet" href="./Assets/reset.css">
 
+    <!-- link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
+
     <!-- link to bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -24,7 +27,16 @@
     <header>
         <h1>Test your JavaScript knowledge!</h1>
     </header>
-    <div class="row empty"></div>
+    <div class="row empty">
+        <div class="col-md-9"></div>
+        <button type="button" class="btn btn-info col-md-2">
+            Time Remaining <span class="badge badge-light">
+                <div id="timer"></div>
+            </span>
+            <span class="sr-only">unread messages</span>
+        </button>
+        <div class="col-md-1"></div>
+    </div>
     <div class="card text-center row" id="quiz-start">
         <div class="card-header">
             Code Quiz Game
@@ -36,10 +48,13 @@
             <a href="#" class="btn btn-info" id="btn-start">Begin Quiz</a>
         </div>
         <div class="card-footer text-muted">
-            2 days ago
+            Current Highscore:
         </div>
     </div>
-    <div class="list-group questions" id="q1">
+    <div class="list-group questions" id="question-container">
+
+    </div>
+    <!-- <div class="list-group questions" id="q1">
         <a href="#" class="list-group-item list-group-item-action">Question 1</a>
         <a href="#false" class="list-group-item list-group-item-action list-group-item-info">A: This is answer
             choice A
@@ -54,8 +69,8 @@
         <a href="#false" class="list-group-item list-group-item-action list-group-item-info">D: This is answer
             choice D
         </a>
-    </div>
-    <div class="list-group questions" id="q2">
+    </div> -->
+    <!-- <div class="list-group questions" id="q2">
         <a href="#" class="list-group-item list-group-item-action">Question 2</a>
         <a href="#true" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A
         </a>
@@ -125,7 +140,7 @@
         <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
         <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
         <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
+    </div> -->
     <!-- <div class="list-group questions" id="q11">
         <a href="#" class="list-group-item list-group-item-action">Question 11</a>
         <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>

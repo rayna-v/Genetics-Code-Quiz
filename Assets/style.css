@@ -3,7 +3,10 @@ body {
 }
 
 header {
-    background-color: turquoise;
+    background-color: rgb(23, 162, 180);
+    color: white;
+    font-family: 'Kelly Slab', cursive;
+    padding: 4px;
 }
 
 .empty {
