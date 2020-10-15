@@ -198,45 +198,6 @@
     </div> -->
     <script>
 
-        var questions = [$('#q1'), $('#q2'), $('#q3'), $('#q4'), $('#q5'), $('#q6'), $('#q7'), $('#q8'), $('#q9'), $('#q10')]
-
-        // console.log(questions.value('#q2'));
-
-        $(document).ready(function () {
-            //hides questions until 'Begin Quiz' button is clicked
-            $(".questions").hide();
-            //  listens for 'click' on 'btn-start'/Begin Quiz and then executes the following code block
-            $("#btn-start").on("click", function () {
-                //call function to start timer
-
-                //hides 'quiz-start' card
-                $("#quiz-start").hide();
-                $('#q1').show();
-
-                // $.each(questions, function (i) {
-                //     // questions[i].show();
-                //     $('#true').on("click", function () {
-                //         questions[i].hide();
-                //         return questions[i++].show();
-                //     })
-                // })
-            })
-            var oldQ = [];
-            var currentQ = [];
-            for (let i = 0; i < questions.length; i++) {
-
-                console.log(questions[i]);
-                // var showQ = questions[i].show();
-                $('#true').on("click", function () {
-                    $('#q1').hide();
-                    oldQ = questions[i].hide();
-                    currentQ = questions[i++].show();
-                })
-                return oldQ;
-                return currentQ;
-            }
-
-
             // ============================================================================================================ 
             //where I was before starting with AskBCS LA
             // $(document).ready(function () {
@@ -259,12 +220,10 @@
             //     }
             //     // if ($('#true').on("click"))
             // })
-
-
-        })</script>
+    </script>
 
     <!-- JavaScript link to my script file -->
-    <script rel="JavaScript" href="./Assets/script.js"></script>
+    <script rel="JavaScript" src="./Assets/script.js"></script>
 
     <!-- JavaScript CDN from BootStrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
