@@ -6,6 +6,11 @@ var btnStart = document.querySelector('a');
 btnStart.setAttribute("id", "start-button");
 btnStart.addEventListener("click", startFunction)
 
+var highScore = document.body.children[2].children[2]
+localStorage.setItem("score", 0)
+console.log(highScore)
+highScore.textContent = "Current High Score: " + localStorage.getItem("score")
+
 var qDiv = document.createElement("div");
 qDiv.setAttribute("class", "btn-group-vertical")
 qDiv.setAttribute("style", "width: 100%")
@@ -20,6 +25,7 @@ qButtonD.setAttribute("class", "qButtons btn btn-primary btn-lg btn-block");
 var qButtons = document.getElementsByClassName("qButtons")
 // console.log(qButtons)
 let currentIndex = 0
+let secondsLeft = 20
 var questionsArr = [
     {
         questionID: 1,
@@ -135,10 +141,27 @@ function startFunction() {
     startCard.removeChild(startCard.children[1])
     startCard.removeChild(startCard.children[1])
     startCard.append(qDiv)
-    divEl[4].textContent = "Time Remaining: "
     questionCycle()
-}
+    var timer = setInterval(() => {
+        secondsLeft--;
+        divEl[4].textContent = "Time Remaining: " + secondsLeft
+        if (secondsLeft === 0 || currentIndex === 4) {
 
+            alert("Time's Up! Your score is " + secondsLeft)
+
+            if (localStorage.getItem("score") < secondsLeft) {
+                localStorage.set("score", secondsLeft)
+                alert("You have acheived a new highscore!")
+            }
+            clearInterval(timer)
+            var playAgain = confirm("Do you want to play again?")
+            if (playAgain === true) {
+                location.reload()
+            }
+
+        }
+    }, 1000);
+}
 function questionCycle() {
 
     divEl[2].textContent = questionsArr[0].number // writes question # to card-header
@@ -179,12 +202,16 @@ function questionCycle() {
     qDiv.append(qButtonC)
     qDiv.append(qButtonD)
 }
+function incorrectAnswer() {
+
+}
 qButtonA.addEventListener("click", function () {
     if (qButtonA.id === "correct") {
         nextQuestion()
     } else {
-        //subtract time
-        alert("incorrect")
+        secondsLeft -= 5
+        // setInterval
+        // alert("incorrect")
     }
 })
 
@@ -193,7 +220,7 @@ qButtonB.addEventListener("click", function () {
         nextQuestion()
     } else {
         //subtract time
-        alert("incorrect")
+        secondsLeft -= 5
     }
 })
 qButtonC.addEventListener("click", function () {
@@ -201,7 +228,7 @@ qButtonC.addEventListener("click", function () {
         nextQuestion()
     } else {
         //subtract time
-        alert("incorrect")
+        secondsLeft -= 5
     }
 })
 qButtonD.addEventListener("click", function () {
@@ -209,7 +236,7 @@ qButtonD.addEventListener("click", function () {
         nextQuestion()
     } else {
         //subtract time
-        alert("incorrect")
+        secondsLeft -= 5
     }
 })
 function nextQuestion() {
@@ -255,45 +282,20 @@ function nextQuestion() {
     qDiv.append(qButtonC)
     qDiv.append(qButtonD)
 
-    // }
-    // for (var i = 0; i < questionsArr.length; i++) {
-    //     console.log(questionsArr[i].questionID)
-    //     console.log(document.getElementsByClassName("qButtons"))
-    //     qButtons[i].addEventListener("click", function (event) {
-    //         if (event.target.id == "correct") {
+    if (secondsLeft === 0 || currentIndex === 4) {
 
-    //             divEl[2].textContent = questionsArr[i + 1].number
-    //             document.querySelector("h5").textContent = questionsArr[i].question
-    //             qButtonA.textContent = questionsArr[i + 1].answerA.text
-    //             qButtonB.textContent = questionsArr[i + 1].answerB.text
-    //             qButtonC.textContent = questionsArr[i + 1].answerC.text
-    //             qButtonD.textContent = questionsArr[i + 1].answerD.text
-    //             // for (var i = i; i < questionsArr; i++) {
-    //             if (questionsArr[i].answerA.correct == true) {
-    //                 qButtonA.setAttribute("id", "correct")
-    //             } else {
-    //                 qButtonA.setAttribute("id", "incorrect")
-    //             }
+        alert("Time's Up! Your score is " + secondsLeft)
+        console.log(localStorage.getItem("score"))
+        if (localStorage.getItem("score") < secondsLeft) {
+            localStorage.set("score", secondsLeft)
+            alert("You have acheived a new highscore!")
+            clearInterval(timer)
+        }
+        clearInterval(timer)
+        var playAgain = confirm("Do you want to play again?")
+        if (playAgain === true) {
+            location.reload()
+        }
 
-    //             if (questionsArr[i].answerB.correct == true) {
-    //                 qButtonB.setAttribute("id", "correct")
-    //             } else {
-    //                 qButtonB.setAttribute("id", "incorrect")
-    //             }
-    //             if (questionsArr[i].answerC.correct == true) {
-    //                 qButtonC.setAttribute("id", "correct")
-    //             } else {
-    //                 qButtonC.setAttribute("id", "incorrect")
-    //             }
-
-    //             if (questionsArr[i].answerD.correct == true) {
-    //                 qButtonD.setAttribute("id", "correct")
-    //             } else {
-    //                 qButtonD.setAttribute("id", "incorrect")
-    //             }
-    //         }
-    //     })
-
-    // }
-
+    }
 }
