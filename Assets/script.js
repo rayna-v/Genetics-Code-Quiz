@@ -1,6 +1,6 @@
 
 
-var questions = [$('#q1'), $('#q2'), $('#q3'), $('#q4'), $('#q5'), $('#q6'), $('#q7'), $('#q8'), $('#q9'), $('#q10')]
+// var questions = [$('#q1'), $('#q2'), $('#q3'), $('#q4'), $('#q5'), $('#q6'), $('#q7'), $('#q8'), $('#q9'), $('#q10')]
 
 // console.log(questions.value('#q2'));
 
@@ -80,8 +80,10 @@ $(document).ready(function () {
 
         if (questionsArr[0].answerA.correct === true) {
             choiceAEl.addClass("correct list-group-item list-group-item-action list-group-item-info")
+            //add eventlistener for correct
         } else {
             choiceAEl.addClass("incorrect list-group-item list-group-item-action list-group-item-info")
+            //subtract time
         }
 
         if (questionsArr[0].answerB.correct === true) {

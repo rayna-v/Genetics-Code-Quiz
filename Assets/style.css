@@ -1,9 +1,9 @@
 body {
-    background-image: url(./JS-colorful.jpg);
+    background: url(./national-cancer-institute-J28Nn-CDbII-unsplash.jpg) center ;
 }
 
 header {
-    background-color: rgb(23, 162, 180);
+    background-color:rgb(220, 53, 69);
     color: white;
     font-family: 'Kelly Slab', cursive;
     padding: 4px;
