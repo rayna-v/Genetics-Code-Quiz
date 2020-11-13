@@ -7,7 +7,7 @@ btnStart.setAttribute("id", "start-button");
 btnStart.addEventListener("click", startFunction)
 
 var highScore = document.body.children[2].children[2]
-localStorage.setItem("score", 0)
+// localStorage.setItem("score", 0)
 console.log(highScore)
 highScore.textContent = "Current High Score: " + localStorage.getItem("score")
 
@@ -135,33 +135,37 @@ var questionsArr = [
 ]
 // document.onload =
 //     startFunction()
-
+function timerInterval() {
+    var timer = setInterval(() => {
+        if (secondsLeft > 0 && currentIndex !== 4) {
+            secondsLeft--;
+            divEl[4].textContent = "Time Remaining: " + secondsLeft
+        } else {
+            clearInterval(timer)
+            alert("Time's Up! Your score is " + secondsLeft)
+            if (parseInt(localStorage.getItem("score")) < secondsLeft && localStorage.getItem("score")) {
+                localStorage.setItem("score", secondsLeft)
+                alert("You have acheived a new highscore!")
+            } else if (!localStorage.getItem("score")) {
+                localStorage.setItem("score", secondsLeft)
+                alert("Thanks for playing the first time!")
+            }
+            var playAgain = confirm("Do you want to play again?")
+            if (playAgain === true) {
+                location.reload()
+            }
+        }
+    }, 1000);
+}
 function startFunction() {
     console.log(startCard)
     startCard.removeChild(startCard.children[1])
     startCard.removeChild(startCard.children[1])
     startCard.append(qDiv)
     questionCycle()
-    var timer = setInterval(() => {
-        secondsLeft--;
-        divEl[4].textContent = "Time Remaining: " + secondsLeft
-        if (secondsLeft === 0 || currentIndex === 4) {
-
-            alert("Time's Up! Your score is " + secondsLeft)
-
-            if (localStorage.getItem("score") < secondsLeft) {
-                localStorage.set("score", secondsLeft)
-                alert("You have acheived a new highscore!")
-            }
-            clearInterval(timer)
-            var playAgain = confirm("Do you want to play again?")
-            if (playAgain === true) {
-                location.reload()
-            }
-
-        }
-    }, 1000);
+    timerInterval()
 }
+
 function questionCycle() {
 
     divEl[2].textContent = questionsArr[0].number // writes question # to card-header
@@ -203,15 +207,17 @@ function questionCycle() {
     qDiv.append(qButtonD)
 }
 function incorrectAnswer() {
-
+    highScore.setAttribute("style", "background-color: red")
+    setTimeout(function () {
+        highScore.setAttribute("style", "background-color: transparent")
+    }, 500)
 }
 qButtonA.addEventListener("click", function () {
     if (qButtonA.id === "correct") {
         nextQuestion()
     } else {
-        secondsLeft -= 5
-        // setInterval
-        // alert("incorrect")
+        secondsLeft -= 4
+        incorrectAnswer()
     }
 })
 
@@ -220,7 +226,8 @@ qButtonB.addEventListener("click", function () {
         nextQuestion()
     } else {
         //subtract time
-        secondsLeft -= 5
+        secondsLeft -= 4
+        incorrectAnswer()
     }
 })
 qButtonC.addEventListener("click", function () {
@@ -228,7 +235,8 @@ qButtonC.addEventListener("click", function () {
         nextQuestion()
     } else {
         //subtract time
-        secondsLeft -= 5
+        secondsLeft -= 4
+        incorrectAnswer()
     }
 })
 qButtonD.addEventListener("click", function () {
@@ -236,7 +244,8 @@ qButtonD.addEventListener("click", function () {
         nextQuestion()
     } else {
         //subtract time
-        secondsLeft -= 5
+        secondsLeft -= 4
+        incorrectAnswer()
     }
 })
 function nextQuestion() {
@@ -282,20 +291,4 @@ function nextQuestion() {
     qDiv.append(qButtonC)
     qDiv.append(qButtonD)
 
-    if (secondsLeft === 0 || currentIndex === 4) {
-
-        alert("Time's Up! Your score is " + secondsLeft)
-        console.log(localStorage.getItem("score"))
-        if (localStorage.getItem("score") < secondsLeft) {
-            localStorage.set("score", secondsLeft)
-            alert("You have acheived a new highscore!")
-            clearInterval(timer)
-        }
-        clearInterval(timer)
-        var playAgain = confirm("Do you want to play again?")
-        if (playAgain === true) {
-            location.reload()
-        }
-
-    }
 }
