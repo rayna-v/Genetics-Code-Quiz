@@ -44,6 +44,42 @@ $(document).ready(function () {
                 text: "answerD text",
                 correct: false,
             }
+        }, {
+            question: "question2 text",
+            answerA: {
+                text: "answerA text",
+                correct: true,
+            },
+            answerB: {
+                text: "answerB text",
+                correct: false,
+            },
+            answerC: {
+                text: "answerC text",
+                correct: false,
+            },
+            answerD: {
+                text: "answerD text",
+                correct: false,
+            }
+        }, {
+            question: "question2 text",
+            answerA: {
+                text: "answerA text",
+                correct: true,
+            },
+            answerB: {
+                text: "answerB text",
+                correct: false,
+            },
+            answerC: {
+                text: "answerC text",
+                correct: false,
+            },
+            answerD: {
+                text: "answerD text",
+                correct: false,
+            }
         }
     ]
 

@@ -23,112 +23,305 @@ qButtonC.setAttribute("class", "qButtons btn btn-primary btn-lg btn-block");
 var qButtonD = document.createElement("button");
 qButtonD.setAttribute("class", "qButtons btn btn-primary btn-lg btn-block");
 var qButtons = document.getElementsByClassName("qButtons")
+
 // console.log(qButtons)
 let currentIndex = 0
-let secondsLeft = 20
+let secondsLeft = 120
 var questionsArr = [
     {
         questionID: 1,
         number: "Question 1",
-        question: "question1 text",
+        question: "What is the function of the Reproductive System?",
         answerA: {
-            text: "answerA text",
+            text: "To support and move the body",
             correct: false,
         },
         answerB: {
-            text: "answerB text",
+            text: "To regulate body functions using hormones",
             correct: false,
         },
         answerC: {
-            text: "answerC text",
+            text: "To produce offspring to continue the species",
             correct: true,
         },
         answerD: {
-            text: "answerD text",
+            text: "To process food and absorb nutrients",
             correct: false,
         }
     },
     {
         questionID: 2,
         number: "Question 2",
-        question: "question2 text",
+        question: "Which of the following is NOT part of the female reproductive system?",
         answerA: {
-            text: "answerA text2",
+            text: "testes",
             correct: true,
         },
         answerB: {
-            text: "answerB text2",
+            text: "ovaries",
             correct: false,
         },
         answerC: {
-            text: "answerC text2",
+            text: "estrogen",
             correct: false,
         },
         answerD: {
-            text: "answerD text2",
+            text: "egg",
             correct: false,
         }
     },
     {
         questionID: 3,
         number: "Question 3",
-        question: "question3 text",
+        question: "Which of the following is NOT part of the male reproductive system?",
         answerA: {
-            text: "answerA text3",
+            text: "uterus",
             correct: true,
         },
         answerB: {
-            text: "answerB text3",
+            text: "sperm cell",
             correct: false,
         },
         answerC: {
-            text: "answerC text3",
+            text: "testes",
             correct: false,
         },
         answerD: {
-            text: "answerD text3",
+            text: "testosterone",
             correct: false,
         }
     },
     {
         questionID: 4,
         number: "Question 4",
-        question: "question4 text",
+        question: "Which is an advantage of SEXUAL reproduction?",
         answerA: {
-            text: "answerA text4",
-            correct: true,
-        },
-        answerB: {
-            text: "answerB text4",
+            text: "requires 2 parents",
             correct: false,
         },
+        answerB: {
+            text: "offspring are different (genetic variation)",
+            correct: true,
+        },
         answerC: {
-            text: "answerC text4",
+            text: "faster",
             correct: false,
         },
         answerD: {
-            text: "answerD text4",
+            text: "no mate needed",
             correct: false,
         }
     },
     {
         questionID: 5,
         number: "Question 5",
-        question: "question5 text",
+        question: "Which is a disadvantage of SEXUAL reproduction?",
         answerA: {
-            text: "answerA text5",
-            correct: true,
+            text: "faster",
+            correct: false,
         },
         answerB: {
-            text: "answerB text5",
+            text: "offspring are different (genetic variation)",
             correct: false,
         },
         answerC: {
-            text: "answerC text5",
+            text: "increased survival rate",
             correct: false,
         },
         answerD: {
-            text: "answerD text5",
+            text: "requires 2 parents",
+            correct: true,
+        }
+    },
+    {
+        questionID: 6,
+        question: "Which is an advantage of ASEXUAL reproduction?",
+        answerA: {
+            text: "identical to parents",
+            correct: false,
+        },
+        answerB: {
+            text: "can produce a large number ",
+            correct: true,
+        },
+        answerC: {
+            text: "takes longer",
+            correct: false,
+        },
+        answerD: {
+            text: "decreased survival rate",
+            correct: false,
+        }
+    },
+    {
+        questionID: 7,
+        question: "Which is a disadvantage of ASEXUAL reproduction?",
+        answerA: {
+            text: "requires 2 parents",
+            correct: false,
+        },
+        answerB: {
+            text: "increased survival rate",
+            correct: false,
+        },
+        answerC: {
+            text: "no mate needed",
+            correct: false,
+        },
+        answerD: {
+            text: "genetically identical",
+            correct: true,
+        }
+    }, {
+        questionID: 8,
+        question: "Which form of reproduction experiences natural selection? ",
+        answerA: {
+            text: "sexual reproduction",
+            correct: true,
+        },
+        answerB: {
+            text: "asexual reproduction",
+            correct: false,
+        },
+        answerC: {
+            text: "both sexual reproduction and asexual reproduction",
+            correct: false,
+        },
+        answerD: {
+            text: "neither sexual reproduction nor asexual reproduction",
+            correct: false,
+        }
+    }, {
+        questionID: 9,
+        question: "Which form of reproduction is able to adapt to a changing environment? ",
+        answerA: {
+            text: "sexual reproduction",
+            correct: true,
+        },
+        answerB: {
+            text: "asexual reproduction",
+            correct: false,
+        },
+        answerC: {
+            text: "both sexual reproduction and asexual reproduction",
+            correct: false,
+        },
+        answerD: {
+            text: "neither sexual reproduction nor asexual reproduction",
+            correct: false,
+        }
+    }, {
+        questionID: 10,
+        question: "Which form of reproduction is able to produce more offspring at a faster rate? ",
+        answerA: {
+            text: "sexual reproduction",
+            correct: false,
+        },
+        answerB: {
+            text: "asexual reproduction",
+            correct: true,
+        },
+        answerC: {
+            text: "both sexual reproduction and asexual reproduction",
+            correct: false,
+        },
+        answerD: {
+            text: "neither sexual reproduction nor asexual reproduction",
+            correct: false,
+        }
+    }, {
+        questionID: 11,
+        question: "How do genetic differences occur in a population that reproduces asexually?",
+        answerA: {
+            text: "genetic material from two parents",
+            correct: false,
+        },
+        answerB: {
+            text: "genetic material from a single parent",
+            correct: false,
+        },
+        answerC: {
+            text: "genetic differences cannot occur in these populations",
+            correct: false,
+        },
+        answerD: {
+            text: "genetic mutations",
+            correct: true,
+        }
+    }, {
+        questionID: 12,
+        question: "Which form of reproduction rquires reproductive organs in order to produce offspring? ",
+        answerA: {
+            text: "asexual reproduction",
+            correct: false,
+        },
+        answerB: {
+            text: "sexual reproduction",
+            correct: true,
+        },
+        answerC: {
+            text: "both types of reproduction",
+            correct: false,
+        },
+        answerD: {
+            text: "neither type of reproduction",
+            correct: false,
+        }
+    }, {
+        questionID: 13,
+        question: "To produce offspring, planarians exchange sperm that fertilizes eggs which develop inside the body. Planarians also have the unique ability to detach their tails and grow into two new identical individuals.  What type of reprodction do Planarians use?",
+        answerA: {
+            text: "asexual reproduction",
+            correct: false,
+        },
+        answerB: {
+            text: "sexual reproduction",
+            correct: false,
+        },
+        answerC: {
+            text: "both sexual reproduction and asexual reproduction",
+            correct: true,
+        },
+        answerD: {
+            text: "neither sexual reproduction nor asexual reproduction",
+            correct: false,
+        }
+    }, {
+        questionID: 14,
+        question: "If an arm is cut off a starfish with part of the center, the arm can grow into a whole new starfish. The original starfish will grow back the lost arm. Which type of reproduction does that describe?",
+        answerA: {
+            text: "asexual reproduction",
+            correct: true,
+        },
+        answerB: {
+            text: "sexual reproduction",
+            correct: false,
+        },
+        answerC: {
+            text: "both sexual reproduction and asexual reproduction",
+            correct: false,
+        },
+        answerD: {
+            text: "neither sexual reproduction nor asexual reproduction",
+            correct: false,
+        }
+    }, {
+        questionID: 15,
+        question: "Flowers can reproduce through cross polloination or self pollination? What type of reporduction do flowers use?",
+        answerA: {
+            text: "asexual reproduction",
+            correct: false,
+        },
+        answerB: {
+            text: "sexual reproduction",
+            correct: true,
+        },
+        answerC: {
+            text: "both sexual reproduction and asexual reproduction",
+            correct: false,
+        },
+        answerD: {
+            text: "neither sexual reproduction nor asexual reproduction",
             correct: false,
         }
     }
@@ -137,7 +330,7 @@ var questionsArr = [
 //     startFunction()
 function timerInterval() {
     var timer = setInterval(() => {
-        if (secondsLeft > 0 && currentIndex !== 4) {
+        if (secondsLeft > 0 && currentIndex !== 15) {
             secondsLeft--;
             divEl[4].textContent = "Time Remaining: " + secondsLeft
         } else {
