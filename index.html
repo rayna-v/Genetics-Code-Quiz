@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Quiz</title>
 
-    <!-- CDN for jquery  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <!-- Reset  -->
     <link rel="stylesheet" href="./Assets/reset.css">
 
@@ -25,27 +22,21 @@
 
 <body>
     <header>
-        <h1>Test your JavaScript knowledge!</h1>
+        <h1>Test your Genetics knowledge!</h1>
     </header>
+
     <div class="row empty">
-        <div class="col-md-9"></div>
-        <button type="button" class="btn btn-info col-md-2">
-            Time Remaining <span class="badge badge-light">
-                <div id="timer"></div>
-            </span>
-            <span class="sr-only">unread messages</span>
-        </button>
-        <div class="col-md-1"></div>
+
     </div>
-    <div class="card text-center row" id="quiz-start">
+    <div class="card text-center row">
         <div class="card-header">
-            Code Quiz Game
+            7th Grade Science
         </div>
         <div class="card-body ">
-            <h5 class="card-title">JavaScript</h5>
-            <p class="card-text">You have 2 minutes to test your JavaScript knowledge! So work quickly to achieve a
+            <h5 class="card-title">Genetics Review</h5>
+            <p class="card-text">You have 2 minutes to test your Genetics knowledge! So work quickly to achieve a
                 highscore - but <b> BEWARE: wrong answers deduct 10 seconds from your remaining time!</b> </p>
-            <a href="#" class="btn btn-info" id="btn-start">Begin Quiz</a>
+            <a href="#" class="btn btn-danger">Begin Review Game</a>
         </div>
         <div class="card-footer text-muted">
             Current Highscore:
@@ -53,203 +44,20 @@
     </div>
     <div class="list-group questions" id="question-container">
 
-    </div>
-    <!-- <div class="list-group questions" id="q1">
-        <a href="#" class="list-group-item list-group-item-action">Question 1</a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">A: This is answer
-            choice A
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">B: This is answer
-            choice B
-        </a>
-        <a href="#true" id="true" class="list-group-item list-group-item-action list-group-item-info">C: This is
-            answer choice
-            C
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">D: This is answer
-            choice D
-        </a>
-    </div> -->
-    <!-- <div class="list-group questions" id="q2">
-        <a href="#" class="list-group-item list-group-item-action">Question 2</a>
-        <a href="#true" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D
-        </a>
-    </div>
-    <div class="list-group questions" id="q3">
-        <a href="#" class="list-group-item list-group-item-action">Question 3</a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B
-        </a>
-        <a href="#false" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C
-        </a>
-        <a href="#true" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D
-        </a>
-    </div>
-    <div class="list-group questions" id="q4">
-        <a href="#" class="list-group-item list-group-item-action">Question 4</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q5">
-        <a href="#" class="list-group-item list-group-item-action">Question 5</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q6">
-        <a href="#" class="list-group-item list-group-item-action">Question 6</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q7">
-        <a href="#" class="list-group-item list-group-item-action">Question 7</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q8">
-        <a href="#" class="list-group-item list-group-item-action">Question 8</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q9">
-        <a href="#" class="list-group-item list-group-item-action">Question 9</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q10">
-        <a href="#" class="list-group-item list-group-item-action">Question 10</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div> -->
-    <!-- <div class="list-group questions" id="q11">
-        <a href="#" class="list-group-item list-group-item-action">Question 11</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q12">
-        <a href="#" class="list-group-item list-group-item-action">Question 12</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q13">
-        <a href="#" class="list-group-item list-group-item-action">Question 13</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q14">
-        <a href="#" class="list-group-item list-group-item-action">Question 14</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q15">
-        <a href="#" class="list-group-item list-group-item-action">Question 15</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q16">
-        <a href="#" class="list-group-item list-group-item-action">Question 16</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q17">
-        <a href="#" class="list-group-item list-group-item-action">Question 17</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q18">
-        <a href="#" class="list-group-item list-group-item-action">Question 18</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q19">
-        <a href="#" class="list-group-item list-group-item-action">Question 19</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div>
-    <div class="list-group questions" id="q20">
-        <a href="#" class="list-group-item list-group-item-action">Question 20</a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A: This is answer choice A </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">B: This is answer choice B </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">C: This is answer choice C </a>
-        <a href="#" class="list-group-item list-group-item-action list-group-item-info">D: This is answer choice D </a>
-    </div> -->
-    <script>
 
-            // ============================================================================================================ 
-            //where I was before starting with AskBCS LA
-            // $(document).ready(function () {
-            // //hides questions until 'Begin Quiz' button is clicked
-            // $(".questions").hide();
-            // //  listens for 'click' on 'btn-start'/Begin Quiz and then executes the following code block
-            // $("#btn-start").on("click", function () {
-            //     //call function to start timer
-            //     //hides 'quiz-start' card
-            //     $("#quiz-start").hide();
-            //     //shows 1st question [element 1 in the 'questions' object]
-            //     $('#q1').show();
-            //     //runs FOR loop for the length of 'questions'
-            //     for (let i = 0; i < questions.length; i++) {
-            //         // var showQ = questions[i].show();
-            //         $('#true').on("click", function () {
-            //             questions[i].hide();
-            //             questions[i++].show();
-            //         })
-            //     }
-            //     // if ($('#true').on("click"))
-            // })
-    </script>
+        <!-- JavaScript link to my script file -->
+        <script rel="JavaScript" src="./Assets/script.js"></script>
 
-    <!-- JavaScript link to my script file -->
-    <script rel="JavaScript" src="./Assets/script.js"></script>
-
-    <!-- JavaScript CDN from BootStrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+        <!-- JavaScript CDN from BootStrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
