@@ -35,7 +35,7 @@ THEN I can save my initials and score
 
 The following gif shows the application's appearance and functionality:
 
-![Genetics-Quiz](./assets/weather-dashboard.gif)
+![Genetics-Quiz](https://github.com/rayna-v/Genetics-Code-Quiz/blob/main/Assets/Genetics-Quiz.gif)
 
 ## Deployment
 
