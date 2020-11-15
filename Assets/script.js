@@ -26,7 +26,7 @@ var qButtons = document.getElementsByClassName("qButtons")
 
 // console.log(qButtons)
 let currentIndex = 0
-let secondsLeft = 120
+let secondsLeft = 180
 var questionsArr = [
     {
         questionID: 1,
@@ -135,6 +135,7 @@ var questionsArr = [
     },
     {
         questionID: 6,
+        number: "Question 6",
         question: "Which is an advantage of ASEXUAL reproduction?",
         answerA: {
             text: "identical to parents",
@@ -155,6 +156,7 @@ var questionsArr = [
     },
     {
         questionID: 7,
+        number: "Question 7",
         question: "Which is a disadvantage of ASEXUAL reproduction?",
         answerA: {
             text: "requires 2 parents",
@@ -174,6 +176,7 @@ var questionsArr = [
         }
     }, {
         questionID: 8,
+        number: "Question 8",
         question: "Which form of reproduction experiences natural selection? ",
         answerA: {
             text: "sexual reproduction",
@@ -193,6 +196,7 @@ var questionsArr = [
         }
     }, {
         questionID: 9,
+        number: "Question 9",
         question: "Which form of reproduction is able to adapt to a changing environment? ",
         answerA: {
             text: "sexual reproduction",
@@ -212,6 +216,7 @@ var questionsArr = [
         }
     }, {
         questionID: 10,
+        number: "Question 10",
         question: "Which form of reproduction is able to produce more offspring at a faster rate? ",
         answerA: {
             text: "sexual reproduction",
@@ -231,6 +236,7 @@ var questionsArr = [
         }
     }, {
         questionID: 11,
+        number: "Question 11",
         question: "How do genetic differences occur in a population that reproduces asexually?",
         answerA: {
             text: "genetic material from two parents",
@@ -250,7 +256,8 @@ var questionsArr = [
         }
     }, {
         questionID: 12,
-        question: "Which form of reproduction rquires reproductive organs in order to produce offspring? ",
+        number: "Question 12",
+        question: "Which form of reproduction requires reproductive organs in order to produce offspring? ",
         answerA: {
             text: "asexual reproduction",
             correct: false,
@@ -269,6 +276,7 @@ var questionsArr = [
         }
     }, {
         questionID: 13,
+        number: "Question 13",
         question: "To produce offspring, planarians exchange sperm that fertilizes eggs which develop inside the body. Planarians also have the unique ability to detach their tails and grow into two new identical individuals.  What type of reprodction do Planarians use?",
         answerA: {
             text: "asexual reproduction",
@@ -288,6 +296,7 @@ var questionsArr = [
         }
     }, {
         questionID: 14,
+        number: "Question 14",
         question: "If an arm is cut off a starfish with part of the center, the arm can grow into a whole new starfish. The original starfish will grow back the lost arm. Which type of reproduction does that describe?",
         answerA: {
             text: "asexual reproduction",
@@ -307,6 +316,7 @@ var questionsArr = [
         }
     }, {
         questionID: 15,
+        number: "Question 15",
         question: "Flowers can reproduce through cross polloination or self pollination? What type of reporduction do flowers use?",
         answerA: {
             text: "asexual reproduction",
