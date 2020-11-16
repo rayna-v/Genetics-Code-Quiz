@@ -350,7 +350,20 @@ function timerInterval() {
         } else if (currentIndex === 99) {
             clearInterval(timer)
             startCard.removeChild(startCard.children[1]);
-            document.querySelector("h5").textContent = "You win! Your score is: " + secondsLeft;
+            document.querySelector("h5").textContent = "Your score is: " + secondsLeft + "! Play again to achieve a new high score.";
+
+
+            if (parseInt(localStorage.getItem("score")) < secondsLeft && localStorage.getItem("score")) {
+
+                document.querySelector("h5").textContent = "You have acheived a new highscore! Enter your initials below.";
+                highScore()
+            }
+            if (!localStorage.getItem("score")) {
+
+                document.querySelector("h5").textContent = "Thanks for playing the first time! Enter your initials below to save your new high score.";
+                highScore()
+
+            }
             let playAgain = document.createElement("button");
             playAgain.setAttribute("class", "btn btn-danger btn-lg btn-block")
             playAgain.textContent = "Play Again"
@@ -358,14 +371,6 @@ function timerInterval() {
             playAgain.addEventListener("click", function () {
                 location.reload()
             })
-            if (parseInt(localStorage.getItem("score")) < secondsLeft && localStorage.getItem("score")) {
-                localStorage.setItem("score", secondsLeft)
-                document.querySelector("h5").textContent = "You have acheived a new highscore! Your score is: " + secondsLeft;
-            }
-            if (!localStorage.getItem("score")) {
-                localStorage.setItem("score", secondsLeft)
-                document.querySelector("h5").textContent = "Thanks for playing the first time! Your score is: " + secondsLeft;
-            }
         } else {
             clearInterval(timer)
             startCard.removeChild(startCard.children[1]);
@@ -380,6 +385,33 @@ function timerInterval() {
             })
 
 
+        }
+        function highScore() {
+            let mb3 = document.createElement("div");
+            mb3.setAttribute("class", "input-group mb-3")
+            startCard.append(mb3)
+            let userInitials = document.createElement("input");
+            userInitials.setAttribute("type", "text");
+            userInitials.setAttribute("class", "form-control");
+            userInitials.setAttribute("placeholder", "Player's Initials (ex. RV)")
+            userInitials.setAttribute("aria-label", "Recipient's username");
+            userInitials.setAttribute("aria-describedby", "button-addon2")
+            mb3.append(userInitials)
+            let inputButtonDiv = document.createElement("div");
+            inputButtonDiv.setAttribute("class", "input-group-append")
+            mb3.append(inputButtonDiv)
+            let inputButton = document.createElement("button")
+            inputButton.setAttribute("class", "btn btn-outline-danger");
+            inputButton.setAttribute("type", "button")
+            inputButton.setAttribute("id", "button-addon2")
+            inputButton.textContent = "Save"
+            inputButtonDiv.append(inputButton);
+            inputButton.addEventListener("click", function () {
+                let = initials = userInitials.value
+                console.log(initials)
+                localStorage.setItem("score", secondsLeft + " - " + initials)
+
+            })
         }
     }, 1000);
 };
