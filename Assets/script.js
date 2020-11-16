@@ -1,16 +1,16 @@
+// selecting, creating and/or declaring variables in global memory and setting attributes
+// main card
 var divEl = document.querySelectorAll("div");
-var startCard = divEl[3];
+var startCard = divEl[5];
 startCard.setAttribute("id", "start-card");
-
+// start button with event handler
 var btnStart = document.querySelector('a');
 btnStart.setAttribute("id", "start-button");
 btnStart.addEventListener("click", startFunction)
-
-var highScore = document.body.children[2].children[2]
-// localStorage.setItem("score", 0)
-console.log(highScore)
+// high score footer
+var highScore = document.body.children[2].children[1].children[2]
 highScore.textContent = "Current High Score: " + localStorage.getItem("score")
-
+// creating buttons with attributes to be appended after start
 var qDiv = document.createElement("div");
 qDiv.setAttribute("class", "btn-group-vertical")
 qDiv.setAttribute("style", "width: 100%")
@@ -23,10 +23,11 @@ qButtonC.setAttribute("class", "qButtons btn btn-primary btn-lg btn-block");
 var qButtonD = document.createElement("button");
 qButtonD.setAttribute("class", "qButtons btn btn-primary btn-lg btn-block");
 var qButtons = document.getElementsByClassName("qButtons")
-
-// console.log(qButtons)
+// question # index and time remaining for timer
 let currentIndex = 0
 let secondsLeft = 180
+
+// array of objects with questions, answers, question number, and correct/incorrect value
 var questionsArr = [
     {
         questionID: 1,
@@ -75,12 +76,12 @@ var questionsArr = [
         number: "Question 3",
         question: "Which of the following is NOT part of the male reproductive system?",
         answerA: {
-            text: "uterus",
-            correct: true,
-        },
-        answerB: {
             text: "sperm cell",
             correct: false,
+        },
+        answerB: {
+            text: "uterus",
+            correct: true,
         },
         answerC: {
             text: "testes",
@@ -277,7 +278,7 @@ var questionsArr = [
     }, {
         questionID: 13,
         number: "Question 13",
-        question: "To produce offspring, planarians exchange sperm that fertilizes eggs which develop inside the body. Planarians also have the unique ability to detach their tails and grow into two new identical individuals.  What type of reprodction do Planarians use?",
+        question: "To produce offspring, planarians exchange sperm that fertilizes eggs which develop inside the body. Planarians also have the unique ability to detach their tails and grow into two new identical individuals.  What type of reproduction do Planarians use?",
         answerA: {
             text: "asexual reproduction",
             correct: false,
@@ -297,7 +298,7 @@ var questionsArr = [
     }, {
         questionID: 14,
         number: "Question 14",
-        question: "If an arm is cut off a starfish with part of the center, the arm can grow into a whole new starfish. The original starfish will grow back the lost arm. Which type of reproduction does that describe?",
+        question: "If an arm is cut off a starfish with part of the center, the arm can grow into a whole new starfish. The original starfish will grow back the lost arm. Which type of reproduction does this describe?",
         answerA: {
             text: "asexual reproduction",
             correct: true,
@@ -317,7 +318,7 @@ var questionsArr = [
     }, {
         questionID: 15,
         number: "Question 15",
-        question: "Flowers can reproduce through cross polloination or self pollination? What type of reporduction do flowers use?",
+        question: "Flowers can reproduce through cross pollination or self pollination. What type of reproduction do flowers use?",
         answerA: {
             text: "asexual reproduction",
             correct: false,
@@ -336,154 +337,149 @@ var questionsArr = [
         }
     }
 ]
-// document.onload =
-//     startFunction()
+// timer function that runs 'secondsLeft' amount of time or until the 'currentIndex' is 15
 function timerInterval() {
     var timer = setInterval(() => {
-        if (secondsLeft > 0 && currentIndex !== 15) {
+        if (secondsLeft > 0 && currentIndex !== 16 && currentIndex !== 99) {
             secondsLeft--;
-            divEl[4].textContent = "Time Remaining: " + secondsLeft
-        } else {
+            document.body.children[2].children[1].children[2].textContent = "Time Remaining: " + secondsLeft
+        } else if (currentIndex === 99) {
             clearInterval(timer)
-            alert("Time's Up! Your score is " + secondsLeft)
+            startCard.removeChild(startCard.children[1]);
+            document.querySelector("h5").textContent = "You win! Your score is: " + secondsLeft;
+            let playAgain = document.createElement("button");
+            playAgain.setAttribute("class", "btn btn-danger btn-lg btn-block")
+            playAgain.textContent = "Play Again"
+            startCard.append(playAgain)
+            playAgain.addEventListener("click", function () {
+                location.reload()
+            })
             if (parseInt(localStorage.getItem("score")) < secondsLeft && localStorage.getItem("score")) {
                 localStorage.setItem("score", secondsLeft)
                 alert("You have acheived a new highscore!")
-            } else if (!localStorage.getItem("score")) {
+            }
+        } else {
+            clearInterval(timer)
+            startCard.removeChild(startCard.children[1]);
+            document.querySelector("h5").textContent = "Time is up! Play again for another chance to win!"
+            document.body.children[2].children[1].children[2].textContent = "Time Remaining: 0"
+            let playAgain = document.createElement("button");
+            playAgain.setAttribute("class", "btn btn-danger btn-lg btn-block")
+            playAgain.textContent = "Play Again"
+            startCard.append(playAgain)
+            playAgain.addEventListener("click", function () {
+                location.reload()
+            })
+            if (!localStorage.getItem("score")) {
                 localStorage.setItem("score", secondsLeft)
                 alert("Thanks for playing the first time!")
             }
-            var playAgain = confirm("Do you want to play again?")
-            if (playAgain === true) {
-                location.reload()
-            }
+
         }
     }, 1000);
-}
+};
+// removes instructions and start button, adds qDiv and calls questionCycle function and begins timerInterval
+// called with event handler on 'start button'
 function startFunction() {
-    console.log(startCard)
     startCard.removeChild(startCard.children[1])
     startCard.removeChild(startCard.children[1])
     startCard.append(qDiv)
-    questionCycle()
+    nextQuestion()
     timerInterval()
 }
-
-function questionCycle() {
-
-    divEl[2].textContent = questionsArr[0].number // writes question # to card-header
-    document.querySelector("h5").textContent = questionsArr[0].question // writes question to h5 
-    // writes answer choices to 4 buttons
-    qButtonA.textContent = questionsArr[0].answerA.text
-    qButtonB.textContent = questionsArr[0].answerB.text
-    qButtonC.textContent = questionsArr[0].answerC.text
-    qButtonD.textContent = questionsArr[0].answerD.text
-
-    // adds IDs of 'correct' or 'incorrect' to buttons
-    if (questionsArr[0].answerA.correct === true) {
-        qButtonA.setAttribute("id", "correct")
-    } else {
-        qButtonA.setAttribute("id", "incorrect")
-    }
-
-    if (questionsArr[0].answerB.correct === true) {
-        qButtonB.setAttribute("id", "correct")
-    } else {
-        qButtonB.setAttribute("id", "incorrect")
-    }
-
-    if (questionsArr[0].answerC.correct === true) {
-        qButtonC.setAttribute("id", "correct")
-    } else {
-        qButtonC.setAttribute("id", "incorrect")
-    }
-
-    if (questionsArr[0].answerD.correct === true) {
-        qButtonD.setAttribute("id", "correct")
-    } else {
-        qButtonD.setAttribute("id", "incorrect")
-    }
-    // appends buttons to qDiv
-    qDiv.append(qButtonA)
-    qDiv.append(qButtonB)
-    qDiv.append(qButtonC)
-    qDiv.append(qButtonD)
-}
-function incorrectAnswer() {
-    highScore.setAttribute("style", "background-color: red")
-    setTimeout(function () {
-        highScore.setAttribute("style", "background-color: transparent")
-    }, 500)
-}
+// adds event handlers to buttons according to id
+// correct choices call nextQuestion function, incorrect answers subtract time from secondsLeft and call incorrectAnswer function
 qButtonA.addEventListener("click", function () {
     if (qButtonA.id === "correct") {
-        nextQuestion()
+        if (currentIndex === 15) {
+            currentIndex = 99
+        } else {
+            nextQuestion()
+        }
     } else {
-        secondsLeft -= 4
+        //subtract time
+        secondsLeft -= 9
         incorrectAnswer()
     }
 })
-
 qButtonB.addEventListener("click", function () {
     if (qButtonB.id === "correct") {
-        nextQuestion()
+        if (currentIndex === 15) {
+            currentIndex = 99
+        } else {
+            nextQuestion()
+        }
     } else {
         //subtract time
-        secondsLeft -= 4
+        secondsLeft -= 9
         incorrectAnswer()
     }
 })
 qButtonC.addEventListener("click", function () {
     if (qButtonC.id === "correct") {
-        nextQuestion()
+        if (currentIndex === 15) {
+            currentIndex = 99
+        } else {
+            nextQuestion()
+        }
     } else {
         //subtract time
-        secondsLeft -= 4
+        secondsLeft -= 9
         incorrectAnswer()
     }
 })
 qButtonD.addEventListener("click", function () {
     if (qButtonD.id === "correct") {
-        nextQuestion()
+        if (currentIndex === 15) {
+            currentIndex = 99
+        } else {
+            nextQuestion()
+        }
     } else {
         //subtract time
-        secondsLeft -= 4
+        secondsLeft -= 9
         incorrectAnswer()
     }
 })
+// begins question cycle
 function nextQuestion() {
+
+    if (currentIndex === 15) {
+        return;
+    }
     currentIndex++
-    console.log(currentIndex)
+    divEl[4].textContent = questionsArr[currentIndex - 1].number // writes question # to card-header
+    document.querySelector("h5").textContent = questionsArr[currentIndex - 1].question // writes question to h5 
+    // writes answer choices to 4 buttons and aligns text to the left
+    qButtonA.textContent = questionsArr[currentIndex - 1].answerA.text
+    qButtonA.setAttribute("style", "text-align: left")
+    qButtonB.textContent = questionsArr[currentIndex - 1].answerB.text
+    qButtonB.setAttribute("style", "text-align: left")
+    qButtonC.textContent = questionsArr[currentIndex - 1].answerC.text
+    qButtonC.setAttribute("style", "text-align: left")
+    qButtonD.textContent = questionsArr[currentIndex - 1].answerD.text
+    qButtonD.setAttribute("style", "text-align: left")
 
-    // for (let i = currentIndex; i < 5; i++) {
-
-    divEl[2].textContent = questionsArr[currentIndex].number // writes question # to card-header
-    document.querySelector("h5").textContent = questionsArr[currentIndex].question // writes question to h5 
-    qButtonA.textContent = questionsArr[currentIndex].answerA.text
-    qButtonB.textContent = questionsArr[currentIndex].answerB.text
-    qButtonC.textContent = questionsArr[currentIndex].answerC.text
-    qButtonD.textContent = questionsArr[currentIndex].answerD.text
-    // for (var i = 0; i < questionsArr; i++) {
     // adds IDs of 'correct' or 'incorrect' to buttons
-    if (questionsArr[currentIndex].answerA.correct === true) {
+    if (questionsArr[currentIndex - 1].answerA.correct === true) {
         qButtonA.setAttribute("id", "correct")
     } else {
         qButtonA.setAttribute("id", "incorrect")
     }
 
-    if (questionsArr[currentIndex].answerB.correct === true) {
+    if (questionsArr[currentIndex - 1].answerB.correct === true) {
         qButtonB.setAttribute("id", "correct")
     } else {
         qButtonB.setAttribute("id", "incorrect")
     }
 
-    if (questionsArr[currentIndex].answerC.correct === true) {
+    if (questionsArr[currentIndex - 1].answerC.correct === true) {
         qButtonC.setAttribute("id", "correct")
     } else {
         qButtonC.setAttribute("id", "incorrect")
     }
 
-    if (questionsArr[currentIndex].answerD.correct === true) {
+    if (questionsArr[currentIndex - 1].answerD.correct === true) {
         qButtonD.setAttribute("id", "correct")
     } else {
         qButtonD.setAttribute("id", "incorrect")
@@ -493,5 +489,12 @@ function nextQuestion() {
     qDiv.append(qButtonB)
     qDiv.append(qButtonC)
     qDiv.append(qButtonD)
-
+    // increments the currentIndex-1 by 1
+}
+// flashes the timer 'red' when incorrect answer is pressed
+function incorrectAnswer() {
+    highScore.setAttribute("style", "background-color: red")
+    setTimeout(function () {
+        highScore.setAttribute("style", "background-color: transparent")
+    }, 500)
 }
