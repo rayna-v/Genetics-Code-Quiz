@@ -10,6 +10,7 @@ btnStart.addEventListener("click", startFunction)
 // high score footer
 var highScore = document.body.children[2].children[1].children[2]
 if (!localStorage.getItem("score")) {
+    localStorage.clear()
     highScore.textContent = "Current High Score: 0"
 } else {
     highScore.textContent = "Current High Score: " + localStorage.getItem("score")
