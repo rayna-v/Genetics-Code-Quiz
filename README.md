@@ -1,6 +1,6 @@
 # Genetics-Code-Quiz
 ## Motivation
-As a former middle school science teacher, I wanted to test use my JavaScript abilities to create a review game for students for Genetics unit. With dynamically created HTML elements, questions and answer choices appear after the correct answer is chosen. As a motivator for students, the timer component was included and subtracts 5 seconds for each incorrect answer. If all questions are answered, the score is taken according to the time left on the timer and stored in Local Storage, if higher than previous score.
+As a former middle school science teacher, I wanted to test use my JavaScript abilities to create a review game for students for the Genetics unit. With dynamically created HTML elements, questions and answer choices appear after the correct answer is chosen. As a motivator for students, the timer component was included and subtracts 5 seconds for each incorrect answer. If all questions are answered, the score is taken according to the time left on the timer and stored in Local Storage, if higher than previous score.
 
 ## The Task
 Provided by University of Denver Coding BootCamp:
