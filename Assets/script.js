@@ -43,7 +43,7 @@ var questionsArr = [
             correct: false,
         },
         answerB: {
-            text: "To regulate body functions using hormones",
+            text: "To transport nutrients and waste to and from cells",
             correct: false,
         },
         answerC: {
@@ -106,11 +106,11 @@ var questionsArr = [
             correct: false,
         },
         answerB: {
-            text: "offspring are different (genetic variation)",
+            text: "genetic variation allows adaptation",
             correct: true,
         },
         answerC: {
-            text: "faster",
+            text: "can produce offspring at a faster rate",
             correct: false,
         },
         answerD: {
@@ -123,20 +123,20 @@ var questionsArr = [
         number: "Question 5",
         question: "Which is a disadvantage of SEXUAL reproduction?",
         answerA: {
-            text: "faster",
+            text: "can produce offspring at a faster rate",
             correct: false,
         },
         answerB: {
-            text: "offspring are different (genetic variation)",
+            text: "genetic variation allows adaptation",
             correct: false,
         },
         answerC: {
-            text: "increased survival rate",
-            correct: false,
-        },
-        answerD: {
             text: "requires 2 parents",
             correct: true,
+        },
+        answerD: {
+            text: "increased survival rate",
+            correct: false,
         }
     },
     {
@@ -148,11 +148,11 @@ var questionsArr = [
             correct: false,
         },
         answerB: {
-            text: "can produce a large number ",
+            text: "can produce a large number of offspring in a short period of time",
             correct: true,
         },
         answerC: {
-            text: "takes longer",
+            text: "takes longer to produce offspring",
             correct: false,
         },
         answerD: {
@@ -177,7 +177,7 @@ var questionsArr = [
             correct: false,
         },
         answerD: {
-            text: "genetically identical",
+            text: "genetically identical population is not able to adapt",
             correct: true,
         }
     }, {
