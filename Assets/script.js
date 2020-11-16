@@ -9,7 +9,11 @@ btnStart.setAttribute("id", "start-button");
 btnStart.addEventListener("click", startFunction)
 // high score footer
 var highScore = document.body.children[2].children[1].children[2]
-highScore.textContent = "Current High Score: " + localStorage.getItem("score")
+if (!localStorage.getItem("score")) {
+    highScore.textContent = "Current High Score: 0"
+} else {
+    highScore.textContent = "Current High Score: " + localStorage.getItem("score")
+}
 // creating buttons with attributes to be appended after start
 var qDiv = document.createElement("div");
 qDiv.setAttribute("class", "btn-group-vertical")
@@ -356,7 +360,11 @@ function timerInterval() {
             })
             if (parseInt(localStorage.getItem("score")) < secondsLeft && localStorage.getItem("score")) {
                 localStorage.setItem("score", secondsLeft)
-                alert("You have acheived a new highscore!")
+                document.querySelector("h5").textContent = "You have acheived a new highscore! Your score is: " + secondsLeft;
+            }
+            if (!localStorage.getItem("score")) {
+                localStorage.setItem("score", secondsLeft)
+                document.querySelector("h5").textContent = "Thanks for playing the first time! Your score is: " + secondsLeft;
             }
         } else {
             clearInterval(timer)
@@ -370,10 +378,7 @@ function timerInterval() {
             playAgain.addEventListener("click", function () {
                 location.reload()
             })
-            if (!localStorage.getItem("score")) {
-                localStorage.setItem("score", secondsLeft)
-                alert("Thanks for playing the first time!")
-            }
+
 
         }
     }, 1000);
